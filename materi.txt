@@ -1,2 +1,16 @@
- 1. php artisan make:migration cretate_products_table
+1. php artisan make:migration cretate_products_table
+ - compact(['subjudul']
 2.php artisan make:controller ProductController
+3.php artisan make:model Product
+4.419 expired ga da @csrf token\
+5. insert ke db products::create($request->all());
+6.Add [_token] to fillable , artinya di model ditambahkan  protected $fillable = ['name','description','price']; atau
+  protected $guarded = ['id']//selain kolom ini berari filable
+7. @method('PUT'); untuk menambah edit
+cara update laravel
+ public function update(Request $request,$id){
+        $product = product::find($id);
+        $product->update($request->all() ); //caraupdate laravel
+        return view('products.edit',compact(['product']));
+        return redirect('/products');
+    }

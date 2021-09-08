@@ -18,4 +18,24 @@ class ProductController extends Controller
          
         // return view('products.index',compact(['subjudul']));
     }
+
+    public function store(Request $request){ //ngambil data dari form
+       //cara insert ke db,syarat harus sama name dg field db
+       Product::create($request->all());
+
+       return redirect('/products');
+    }
+    public function edit($id){
+        $product = product::find($id);
+        return view('products.edit',compact(['product']));
+    }
+
+    public function update(Request $request,$id){
+        $product = product::find($id);
+        $product->update($request->all() ); //caraupdate laravel
+        return redirect('/products');
+    }
+
+    
+
 }

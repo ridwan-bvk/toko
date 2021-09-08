@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    // protected $fillable = ['name','description','price','image_url'];
+    protected $guarded = ['id'];//selain kolom ini berari filable
 }

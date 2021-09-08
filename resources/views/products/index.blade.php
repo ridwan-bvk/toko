@@ -5,6 +5,7 @@
         <th>name</th>
         <th>Description</th>
         <th>Price</th>
+        <th>Action</th>
     </thead>
     <tbody>
         @foreach ($products as $product )
@@ -12,6 +13,9 @@
                 <td>{{ $product -> name }}</td>
                 <td>{{ $product -> description }}</td>
                 <td>{{ $product -> price }}</td>  
+                <td>
+                    <a href="/products/{{ $product->id }}/edit">Edit </a>
+                </td>  
             </tr>
         @endforeach
     </tbody>
