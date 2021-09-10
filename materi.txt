@@ -14,3 +14,19 @@ cara update laravel
         return view('products.edit',compact(['product']));
         return redirect('/products');
     }
+8. metode Delete diroutenya:
+	ROute::Delete('/products/{id}',[ProductController::class,'destroy']);//delete
+	tambahkan @method('DELETE'): contoh di form :
+                    <form action="/products/{{ $product->id }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input type="submit" value="delete">
+                    </form>
+9. resfull API
+	.-untuk API gunakan route-API.php, dan pengisian nya sama seperti routes yg di web.php
+	.-buat cotroller baru untuk API
+	.-untuk Api pemanggilannya gunakan /api
+	.-dan biasanya return nya menggunakan return response()->json(['message'=>'succes', 'data'=>'tes']);
+	.-$products = Product::all();
+        return response()->json(['message'=>'succes', 'data'=>$products]);
+	.-untuk metod get bisa dg url untuk api,tp untuk method post haru menggunakan postman

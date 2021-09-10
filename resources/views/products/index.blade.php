@@ -14,7 +14,12 @@
                 <td>{{ $product -> description }}</td>
                 <td>{{ $product -> price }}</td>  
                 <td>
-                    <a href="/products/{{ $product->id }}/edit">Edit </a>
+                    <a href="/products/{{ $product->id }}/edit">Edit </a> 
+                    <form action="/products/{{ $product->id }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input type="submit" value="delete">
+                    </form>
                 </td>  
             </tr>
         @endforeach
