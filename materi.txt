@@ -30,3 +30,7 @@ cara update laravel
 	.-$products = Product::all();
         return response()->json(['message'=>'succes', 'data'=>$products]);
 	.-untuk metod get bisa dg url untuk api,tp untuk method post haru menggunakan postman
+10. gunakan postman untuk memanggil url yg dibuat di api.php
+11. untuk api post itu hanya bisa ditest di posman dg mengirimkan data form seperti dg form requestnya,
+untuk formnya ada di body di postman
+12. untuk update itu menggunakan metode put dan cara testing di postman nya gunakan body pilih row dan pilih j-son

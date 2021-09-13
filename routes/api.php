@@ -15,8 +15,9 @@ use App\Http\Controllers\ProductApiController;
 */
 
 Route::get('/products',[ProductApiController::class,'index']); 
-Route::get('/products/create',[ProductApiController::class,'create']); 
-Route::post('/products',[ProductApiController::class,'store']); 
-Route::get('/products/{id}/edit',[ProductApiController::class,'edit']); 
-Route::put('/products/{id}',[ProductApiController::class,'update']); //update
+// Route::get('/products/create',[ProductApiController::class,'create']); tidak menggunakan create,karena createnya dimobile
+Route::post('/products',[ProductApiController::class,'store']); //http://127.0.0.1:8000/api/products
+// Route::get('/products/{id}/edit',[ProductApiController::class,'edit']); //tidak menggunakan form lg
+Route::get('/products/{id}',[ProductApiController::class,'show']); //http://127.0.0.1:8000/api/products/1
+Route::put('/products/{id}',[ProductApiController::class,'update']); //http://127.0.0.1:8000/api/products/1
 ROute::delete('/products/{id}',[ProductApiController::class,'destroy']);//delete
