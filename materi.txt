@@ -34,3 +34,55 @@ cara update laravel
 11. untuk api post itu hanya bisa ditest di posman dg mengirimkan data form seperti dg form requestnya,
 untuk formnya ada di body di postman
 12. untuk update itu menggunakan metode put dan cara testing di postman nya gunakan body pilih row dan pilih j-son
+13. untuk aplikasi flutter:
+install di cmd
+flutter create toko_online
+1.cara install flutter, install extensi flutter di vscode
+2.buat simolator,bisa menggunakan android studio,chrome,atau hp
+   syntak untuk simulator di chrome
+a. buat project di vscode fluter new project
+b. dcomandpromp tulis flutter doctor untuk pengecekan kesiapan flutter
+	kemudian flutter config --enable-web 
+	flutter run -d chrome
+c. untuk setting api dipubspec.yaml dibawah cupertino_icon, tulis http : ^0.13.0 
+
+materi dart:
+1.methode async,await,biasa
+---------------------------
+.-metode biasa menjadikan lama didb,jadi hang,karena harus berurutan
+.-metode async masing2 tida menunggu berurutan agar ui tidak hang/leg
+	cara penulisan:
+	Future <void> getDataAsync{
+		}
+future agar hasiltidak langsung return,masa depan
+.-metode await itu menunggu dulu urutan,biasanya digunakan didalam async
+	cara penulisan wait
+	dimainnya harus di tulis async();  --karena metode await dari async jg
+	contoh await p.getDataAsync();  -- ini akan menunggu dulu 
+.-methode .then itu salah satu alternaatif jika ingin ditunggu seperti pada wait
+	cara penulisan 
+	p.getDataAsync().then(_){
+		print('job 3');
+		}
+2. konsep OOP untuk refrence/pointer/idintifier
+.-pada oop setiap variabel yang di declarsikan itu tidak menyimpan data,tetapi menyimpan alamat(refrence) data
+ ex:
+	tree fisrsTree=Tree(numberOfFruits;5);
+	tree secondTree=Tree(numberofFruits;5);
+ini berarti tree fisrsTree != tree secondTree,tetapi
+	tree fisrsTree=Tree(numberOfFruits;5);
+	tree seconndTree = tree fisrsTree
+ini berari tree fisrsTree== tree SecondTree (karena dia beralamat yg sama)
+3. keyword FINAL
+.-final itu pointer yg menunjuk pada object yg sama seterusnya,selama aplikasi berjalan
+.-final tidak dirubah
+.-final harus langsung di inisialisasi
+.refrence final bisa dideklarasikan dimana za
+ex:	final x int;   ini tidak boleh harus ada inisialisasi,seharusnya
+	final x int 5; begini
+	bisa juga di constraktor
+4. keyword CONST/konstanta
+..-literal constant
+5. fungsi identical (a,b)
+	
+	
