@@ -83,6 +83,330 @@ ex:	final x int;   ini tidak boleh harus ada inisialisasi,seharusnya
 	bisa juga di constraktor
 4. keyword CONST/konstanta
 ..-literal constant
-5. fungsi identical (a,b)
+5. fungsi identical (a,b) untuk membedakan dua parameter
+				9/22/2021 10:24 AM 
+6.metode get data dan set data untuk variabel yang private,variabel privete itu penulisannya depannya ada underscore
+  (_contoh)
+	void main(list<string> argument){
+	  var box = DateTiemScureBox(date.now,'123'
+	  
+	  ptint(box.getdata('123').toString());
+	}
+
+	class DatetimeScureBox{
+	  final DateTime _data;
+	  final String _pin;
+	  DateTimeScureBox(this._data,this._pin);
+	  DateTime getData(String pin) =>(pin==_pin)?_data:null;
+	}
+
 	
 	
+	otputna :tgl sekarang
+	
+7. contoh penulisan if, 	
+   (pin==_pin)? true:false;
+8. Generic 
+===========
+adalah type data apa aja/general lebih umum
+	contoh ada dua class 
+Class I :
+	void main(list<string> argument){
+	  var box = DateTiemScureBox(DateTime.now,'123'
+	  
+	  print(box.getdata('123').toString());
+	}
+	
+	class DatetimeScureBox{
+	  final DateTime _data;
+	  final String _pin;
+	  DateTimeScureBox(this._data,this._pin);
+	  DateTime getData(String pin) =>(pin==_pin)?_data:null;
+	}
+
+	
+Class II :
+	void main(list<string> argument){
+	  var box = IntScureBox(100,'123')
+	  
+	  print(box.getdata('123').toString());
+	}
+
+	class IntScureBox{
+	  final Int _data;
+	  final String _pin;
+
+	  IntScureBox(this._data,this._pin);
+	  int getData(String pin) =>(pin==_pin)?_data:null;
+	}
+
+	
+data clas diatas yang membedakan hanya typedata _data clasI datetime,class II int,dengan-
+generic type data bisa seperti ini
+
+	class ScureBox <X>{
+	  final X _data;
+	  final String _pin;
+
+	  IntScureBox(this._data,this._pin);
+	  X getData(String pin) =>(pin==_pin)?_data:null;
+	}
+X jadi variabel type data apa aja,tergantung didepannya jadi bisa digunakan apa aja,contoh :
+var box = ScureBox <Int> (100,'123') atau var box = ScureBox <datetime> (DateTime.now,'123');
+atau var box = ScureBox <string> ('Hallo','123'); atau var box = ScureBox <person> ('Dodi','123');
+untuk contoh pemakaiannya:
+	void main(list<string> argument){
+	  var box = ScureBox <Int> (100,'123')
+	 
+	  print(box.getdata('123').toString());
+	}
+9. Enum & Cascade Notation
+==========================
+Enum adalah penamaan sebuah status agar mudah dipahami
+>> contoh tanpa enum
+	Class MonsterUcoa{
+	 Final int Status; //1.normal,2.poisoned;3.confused
+
+	 void move(){
+	  	switch(status){
+			case 1	:
+			print ('Ucoa is Moving');
+			break;
+			case 2	:
+			print ('Ucoa can't move,ucoa is dying,ucoa need help');
+			break;
+			case 3	:
+			print ('Ucoa is Moving');
+			break;
+			default:
+			print('Ucoa is snipping');
+		}
+	 }
+	 
+	void eat(){
+		print('ucoa is eating batagor');
+		}
+	}
+cara pemnnggilannya
+	void main(list<string> argument){
+	 MonsterUcoa m = MonsterUcoa(status:3);
+	 m.move()
+	}
+>> contoh dg enum
+	 enum Ucoastatus{normal,poisoned,confused}
+
+	 Class MonsterUcoa{
+	 Final int Status; //1.normal,2.poisoned;3.confused
+
+	 void move(){
+	  	switch(status){
+			case UcoaStatus.normal	:
+			print ('Ucoa is Moving');
+			break;
+			case UcoaStatus.posined	:
+			print ('Ucoa can't move,ucoa is dying,ucoa need help');
+			break;
+			case UcoaStatus.confused:
+			print ('Ucoa is Moving');
+			break;
+			default:
+			print('Ucoa is snipping');
+		}
+	 }
+	 
+	void eat(){
+		print('ucoa is eating batagor');
+		}
+	}
+cara pemnnggilannya
+	void main(list<string> argument){
+	 MonsterUcoa m = MonsterUcoa(status:UcoaStatus.normal);
+	 m.move()
+	}
+apabila ada kasus, ditengah2 ada print() atau apapun
+void main(list<string> argument){
+	 MonsterUcoa m = MonsterUcoa(status:UcoaStatus.normal);
+	 print('hallo world');
+	 m.
+	  .. move();
+	  .. eat();
+	}
+11:07 AM 9/23/2021
+
+10. Required
+==================
+required atau wajib diisi
+contoh:
+	void main(list <string> arguments){
+		person p;
+		p = person()
+		print(p.age)
+	}
+	class person{
+	   final string name;
+	   final int age;
+	person(this.name,this.age = 0);
+	}
+menjadi
+import 'package:meta/meta.dart' --- ditambah ini
+	void main(list <string> arguments){
+		person p;
+		p = person(p.name = null) --wajib diisi
+		print(p.age)
+	}
+	class person{
+	   final string name;
+	   final int age;
+	person(@required{this.name,this.age = 0});---tambah required jd wajib diisi
+	}
+11. assert (keharusan),jadi untuk variabel seperti nama diatas harus diisi terlebih dulu,program akan stop jika tidak diisi
+contoh:
+
+import 'package:meta/meta.dart' --- ditambah ini
+	void main(list <string> arguments){
+		person p;
+		p = person(p.name = null) --wajib diisi
+		print(p.age)
+	}
+	class person{
+	   final string name;
+	   final int age;
+	person(@required{this.name,this.age = 0}){;---tambah required jd wajib diisi
+	assert(name!= null,"You must give person's name")-- jika tidak disi maka akan muncul assertsion error,dan aplikasi stop
+}
+	}
+12.try catch : ini berfungsi untuk menangkap error agar aplikasi tetap berjalan walau ada error
+contoh:
+import 'package:meta/meta.dart' --- ditambah ini
+	void main(list <string> arguments){
+		person p;
+
+		try{
+			p = person(p.name = null) --kondisi yg wajib diisi
+		}catch(e) {           --menangkap eror disimpan di variabel e
+			print(e);
+		}
+
+		print("hello");
+	}
+	class person{
+	   final string name;
+	   final int age;
+	person(@required{this.name,this.age = 0}){;---tambah required jd wajib diisi
+	assert(name!= null,"You must give person's name")-- jika tidak disi maka akan muncul assertsion error,dan aplikasi stop
+}
+	}
+
+13 methode Sort,foreach(perulangan)
+a. foreach
+	contoh
+------------------------------------------------------
+	void main(list<string> argument){
+	List<person> person[
+	person("admin",32),
+	person("user",52),
+	person("admin",20),
+	person("merchant",20),
+	person("admin",20),
+	person("user",30),
+	person("merchant",30),
+	person("user",30),
+	];
+
+	person.foreach(element){
+	print(element.role+'-'+element.age.tostring());
+	}
+	}
+
+	class person {
+	 final string role;
+	 final int age;
+	 person(this.role,this.age)
+	}
+------------------------------------------------------
+a. sort: p.sort(p1,p2)--jika hasil banding p1 dan p2 negatif maka p1 dikiri (duluan),jika positif p2 dikiri (duluan)
+contoh sort integer
+------------------------------------------------------
+	void main(list<string> argument){
+	List<person> person[
+	person("admin",32),
+	person("user",52),
+	person("admin",20),
+	person("merchant",20),
+	person("admin",20),
+	person("user",30),
+	person("merchant",30),
+	person("user",30),
+	];
+	
+	person.sort(p1.p2)=>p1.age - p2.age; ---jadi uratan kecil kebarwah
+	person.foreach(element){
+	print(element.role+'-'+element.age.tostring());
+	}
+	}
+
+	class person {
+	 final string role;
+	 final int age;
+	 person(this.role,this.age)
+	}
+------------------------------------------------------
+	a.2. contoh sort string
+coding diatas rubah
+person.sort(p1.p2)=>p1.role.compareTo(p2.role);-- a-z
+	a.3. dua sort
+kalau mau sortrole nya dulu urut,kemudian umurnya dari paling kecil
+coding diatas rubah
+	person.sort(p1.p2){
+	if(p1.role.compareTo(p2.role) != 0){ --kalau sama2 admin/user
+	 return p1.role.compareTo(p2.role);
+	}else{
+	 return p1.age.compareTo(p2.age);
+	}
+	}
+	a.4 kalau mau urut nya custom,bisa dibuat bobot nya dulu	
+contoh:
+------------------------------------------------------
+	void main(list<string> argument){
+	List<person> person[
+	person("admin",32),
+	person("user",52),
+	person("admin",20),
+	person("merchant",20),
+	person("admin",20),
+	person("user",30),
+	person("merchant",30),
+	person("user",30),
+	];
+	
+	person.sort(p1.p2){
+	 if(p1.role.roleweight - p2.role.roleweight   != 0){ --kalau sama2 admin/user
+		 return p1.role.roleweight - p2.role.roleweight;
+	 }else{
+		 return p1.age.compareTo(p2.age);
+	 }
+	}
+	person.foreach(element){
+	print(element.role+'-'+element.age.tostring());
+	}
+	}
+
+	class person {
+	 final string role;
+	 final int age;
+	 person(this.role,this.age)
+
+	--tambah
+	int get roleweight{
+	switch(role){
+		case : "Merchant";
+		return 1;
+		break;
+		case : "Admin";
+		return 2;
+		break;
+		default :return 3
+	}
+	}
+	}
+------------------------------------------------------
