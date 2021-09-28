@@ -410,3 +410,8 @@ contoh:
 	}
 	}
 ------------------------------------------------------
+14. SOLID
+1. S:single responsible principle
+class Car
+2.O:open/close prinsiple
+3.L:liskov siubstitution principle
